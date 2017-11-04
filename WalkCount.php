@@ -2,11 +2,7 @@
 
 class WalkCount
 {
-    public $start = 10;
-    public $goal = 100;
-    public $move = 2;
     public $count = 0;
-    public $name = 'さんの';
 
     /**
      * @param int $start
@@ -17,35 +13,34 @@ class WalkCount
      */
     static public function walk($start, $goal, $move, $count)
     {
+        $conststart = $start;
         while ($start < $goal) {
             $start += $move;
             $count++;
         }
         $result = array(
-            "合計" => $count,
-            "歩数" => $start
+            "start" => $conststart,
+            "count" => $count,
+            "goal" => $start,
+            "move" => $move,
         );
         return $result;
-
     }
 
-    public function setName($name)
+    public function setName($name = null)
     {
-        if (is_string($name)) {
-            $result = printf($name . $this->name);
-            return $result;
+        if (!empty($name)) {
+            $result1 = $name . $this->name;
+            return $result1;
         } else {
-            return "入ってないよ!";
+            return 'ななしくん';
         }
     }
 
 }
 
 $const = new WalkCount();
-$ww = $const->walk($const->start, $const->goal, $const->move, $const->count);
-echo $const->setName(1) . "歩いた合計は" . $ww{'合計'};var_dump('');
-echo $const->setName('') . "歩いた合計は" . $ww{'合計'};
-echo $const->setName('田中') . "歩いた歩数は" . $ww{'歩数'};
-foreach ($ww as $value){
-echo "valueは".$value;
-};
+$name = $const->setName(($_POST['name']));
+$ww = $const->walk(($_POST['start']), ($_POST['goal']), ($_POST['move']), $const->count);
+var_dump($name);
+echo $name . 'はスタートが' . $ww['start'] . '.ゴールは' . $ww['goal'] . 'だった.それで歩ける幅は' . $ww['move'] . 'だったが頑張って' . $ww['count'] . '歩いてゴールについた。';

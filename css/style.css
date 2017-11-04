@@ -1,20 +1,22 @@
 body {
-    background: #000;
-    color: #fff
+    background: white;
+    /*color: lightgoldenrodyellow;*/
 }
 
 h1 {
-    color: aqua;
+    color: green;
 }
 
 a {
-    color: aquamarine;
+    color: purple;
 }
 
 .box {
-    text-align: right;
+    text-align: center;
 }
 
 .box p {
-    color: pink;
+    color: gray;
 }
+
+.box
